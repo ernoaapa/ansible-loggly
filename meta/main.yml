@@ -2,7 +2,6 @@
 galaxy_info:
   author: Kristjan Kristjansson
   description: Basic Loggly installation and configuration
-  company: Jivaro
   min_ansible_version: 1.4
   platforms:
   - name: Ubuntu

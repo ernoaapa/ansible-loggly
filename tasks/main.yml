@@ -1,0 +1,30 @@
+---
+- name: install syslog-ng
+  sudo: true
+  action: apt pkg={{item}} state=present
+  with_items:
+    - syslog-ng-core
+    - syslog-ng
+
+- name: create loggly cert folder
+  sudo: true
+  file: dest=/etc/syslog-ng/keys/ca.d state=directory
+
+- name: get loggly certificate
+  sudo: true
+  shell: wget https://logdog.loggly.com/media/loggly.com.crt -O /tmp/loggly.com.crt
+
+- name: get loggly ca certificate
+  sudo: true
+  shell: wget https://certs.starfieldtech.com/repository/sf_bundle.crt -O /tmp/sf_bundle.crt
+
+- name: combine loggly certificates and place in correct folder
+  sudo: true
+  raw: cat {/tmp/sf_bundle.crt,/tmp/loggly.com.crt} > /etc/syslog-ng/keys/ca.d/loggly_full.crt
+
+- name: default syslog-ng template
+  sudo: true
+  template: >
+    src=22-default.conf.j2
+    dest=/etc/syslog-ng/conf.d/22-default.conf
+  notify: "restart syslog-ng"

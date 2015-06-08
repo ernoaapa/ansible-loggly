@@ -1,4 +1,4 @@
-template LogglyFormatDefault { template("<${PRI}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} ${MSGID} [{{token}}@41058 tag=\"{{cluster}}\"] $MSG\n");
+template LogglyFormatDefault { template("<${PRI}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} ${MSGID} [{{ loggly.token }}@41058 tag=\"{{ loggly.tags }}\"] $MSG\n");
 	template_escape(no);
 };
 

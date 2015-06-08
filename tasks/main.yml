@@ -1,12 +1,12 @@
 ---
 - name: install syslog-ng
   sudo: true
-  action: apt pkg={{item}} state=present
+  action: apt pkg={{ item }} state=present update_cache=yes
   with_items:
     - syslog-ng-core
     - syslog-ng
 
-- name: create loggly cert folder
+- name: create loggly certificate folder
   sudo: true
   file: dest=/etc/syslog-ng/keys/ca.d state=directory
 

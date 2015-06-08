@@ -26,12 +26,13 @@ Role Variables
 --------------
 
 ```
-cluster: ''
-token: ''
+loggly:
+  tags: ''
+  token: ''
 ```
 
-cluster variable is used as a Loggly tag.
-token variable is your Loggly account token.
+Loggly tags can be multiple tags, comma-separated.
+Loggly token variable is your Loggly account token.
 
 Dependencies
 ------------

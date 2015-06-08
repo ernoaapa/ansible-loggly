@@ -1,12 +1,18 @@
 ---
 galaxy_info:
   author: Kristjan Kristjansson
-  description: Basic Loggly installation and configuration
+  description: Basic syslog-ng installation and configuration for Loggly
   min_ansible_version: 1.4
+  license: MIT
   platforms:
   - name: Ubuntu
     versions:
     - precise
+    - quantal
+    - raring
+    - saucy
+    - trusty
   categories:
   - system
   - web
+  - monitoring

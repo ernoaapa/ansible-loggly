@@ -1,10 +1,11 @@
-template LogglyFormatDefault { template("<${PRI}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} ${MSGID} [{{ loggly.token }}@41058 tag=\"{{ loggly.tags }}\"] $MSG\n");
+
+template LogglyFormatDefault { template("<${PRI}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} ${MSGID} [{{ loggly.token }}@41058 tag=\"{{ loggly.tags | join("\\\" tag=\\\"") }}\"] $MSG\n");
 	template_escape(no);
 };
 
 destination d_loggly {
-        tcp("logs-01.loggly.com" port(6514) 
-        tls(peer-verify(required-untrusted) ca_dir('/etc/syslog-ng/keys/ca.d/')) 
+        tcp("logs-01.loggly.com" port(6514)
+        tls(peer-verify(required-untrusted) ca_dir('/etc/syslog-ng/keys/ca.d/'))
         template(LogglyFormatDefault));
 };
 

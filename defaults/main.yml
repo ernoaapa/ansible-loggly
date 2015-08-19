@@ -1,3 +1,3 @@
 loggly:
   tags: ''
-  token: ''
+  token: []

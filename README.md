@@ -28,10 +28,12 @@ Role Variables
 ```
 loggly:
   tags: ''
-  token: ''
+  token:
+    - ansible
+    - syslog-ng
 ```
 
-Loggly tags can be multiple tags, comma-separated.
+Loggly tags is list of multiple tags.
 Loggly token variable is your Loggly account token.
 
 Dependencies

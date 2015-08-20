@@ -20,7 +20,7 @@
 
 - name: combine loggly certificates and place in correct folder
   sudo: true
-  raw: cat {/tmp/sf_bundle.crt,/tmp/loggly.com.crt} > /etc/syslog-ng/keys/ca.d/loggly_full.crt
+  raw: cat /tmp/sf_bundle.crt > /etc/syslog-ng/keys/ca.d/loggly_full.crt && cat /tmp/loggly.com.crt >> /etc/syslog-ng/keys/ca.d/loggly_full.crt
 
 - name: default syslog-ng template
   sudo: true
